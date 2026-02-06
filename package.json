@@ -1,0 +1,27 @@
+{
+  "name": "super-bank",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "database:init": "node utils/database/index.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.95.1",
+    "next": "16.1.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.1.18",
+    "babel-plugin-react-compiler": "1.0.0",
+    "dotenv": "17.2.4",
+    "eslint": "9.39.2",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "4.1.18"
+  }
+}
