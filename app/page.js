@@ -1,7 +1,10 @@
-export default function Home() {
+import SearchBar from "@/components/SearchBar";
+
+export default async function Home() {
   return (
-    <main>
-      <h1>Super Bank</h1>
-    </main>
+    <div className="min-h-lvh flex flex-col items-center gap-10 ">
+      <h1 className="text-3xl font-bold">Super Bank</h1>
+      <SearchBar />
+    </div>
   );
 }
