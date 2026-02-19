@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useState, Suspense } from "react";
 
-export default function SearchBarClient({ clients }) {
+export default function SearchBarClient({ clients, errorMessage }) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -45,6 +45,7 @@ export default function SearchBarClient({ clients }) {
       <Suspense fallback={<p>Loading clients...</p>}>
         <ClientList clientSearched={clientSearched} />
       </Suspense>
+      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
     </div>
   );
 }

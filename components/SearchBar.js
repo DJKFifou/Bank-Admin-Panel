@@ -1,6 +1,7 @@
 import SearchBarClient from "./SearchBarClient";
 
 export default async function SearchBar() {
+  let errorMessage = "";
   let clients = [];
 
   try {
@@ -8,7 +9,8 @@ export default async function SearchBar() {
     clients = await res.json();
   } catch (error) {
     console.error("Error fetching clients:", error);
+    errorMessage = "Error fetching clients. Please try again.";
   }
 
-  return <SearchBarClient clients={clients} />;
+  return <SearchBarClient clients={clients} errorMessage={errorMessage} />;
 }

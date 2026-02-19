@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function TransferMoneyForm({ id, accounts }) {
+export default function TransferMoneyForm({ accounts }) {
   const router = useRouter();
   const [fromAccount, setFromAccount] = useState("");
   const [toAccount, setToAccount] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,15 +35,13 @@ export default function TransferMoneyForm({ id, accounts }) {
         throw new Error("Failed to transfer money");
       }
 
-      const result = await response.json();
-
       router.refresh();
 
       event.target.reset();
       setFromAccount("");
       setToAccount("");
     } catch (error) {
-      console.error("Error transferring money:", error);
+      setMessage("Error transferring money. Please try again.");
     }
   };
 
@@ -120,6 +119,7 @@ export default function TransferMoneyForm({ id, accounts }) {
           Transfer Money
         </button>
       </form>
+      {message && <p className="text-red-500">{message}</p>}
     </div>
   );
 }
