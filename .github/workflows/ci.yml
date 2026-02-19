@@ -16,10 +16,10 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install dependencies
+      - name: Clean install dependencies
         run: |
-          npm ci
-          npm install --no-save lightningcss
+          rm -rf node_modules package-lock.json
+          npm install
 
       - name: Build
         run: npm run build
