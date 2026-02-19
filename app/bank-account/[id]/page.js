@@ -1,5 +1,6 @@
 import DeleteFormAccount from "@/components/forms/DeleteFormAccount";
 import BackButton from "@/components/BackButton";
+import { toCapitalized, formatDate } from "@/utils/utils";
 import { notFound } from "next/navigation";
 
 export default async function BankAccountPage({ params }) {
@@ -58,9 +59,22 @@ export default async function BankAccountPage({ params }) {
           {filteredTransactionsData.length > 0 ? (
             <ul className="flex flex-col gap-2 list-disc list-inside">
               {filteredTransactionsData.map((transaction) => (
-                <li key={transaction.id}>
-                  {transaction.description || "No description"} :{" "}
-                  {transaction.amount}€
+                <li
+                  key={transaction.id}
+                  className="bg-gray-100 p-2 rounded flex gap-10 items-center justify-between"
+                >
+                  <div className="flex flex-col gap-1">
+                    <p className="font-bold text-lg">
+                      {toCapitalized(
+                        transaction.description || "No description",
+                      )}
+                    </p>
+                    <p>{formatDate(transaction.created_at)}</p>
+                  </div>
+                  <p className="font-bold text-lg">
+                    {toCapitalized(transaction.type)}
+                  </p>
+                  <p className="font-bold text-lg">{transaction.amount}€</p>
                 </li>
               ))}
             </ul>
