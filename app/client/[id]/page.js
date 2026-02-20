@@ -3,6 +3,7 @@ import DeleteClient from "@/components/forms/DeleteClient";
 import AccountList from "@/components/AccountList";
 import TransferMoneyForm from "@/components/forms/TransferMoneyForm";
 import BackButton from "@/components/BackButton";
+import ListSkeleton from "@/components/ListSkeleton";
 import { Suspense } from "react";
 
 async function fetchData(url) {
@@ -51,7 +52,7 @@ export default async function ClientPage({ params }) {
       <h1 className="text-xl font-bold">
         Client : {data.first_name} {data.last_name}
       </h1>
-      <Suspense fallback={<p>Chargement des comptes...</p>}>
+      <Suspense fallback={<ListSkeleton />}>
         <AccountList accountData={filteredAccountData} total={total} />
       </Suspense>
       <AddFormAccount id={id} />

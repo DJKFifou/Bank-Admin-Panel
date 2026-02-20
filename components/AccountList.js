@@ -17,7 +17,7 @@ export default async function AccountList({ accountData, total }) {
           </li>
         ))}
       </ul>
-      <p className="font-bold">Total : {total} €</p>
+      {total && <p className="font-bold">Total : {total} €</p>}
     </div>
   );
 }

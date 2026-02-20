@@ -17,3 +17,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.skeleton-list-item {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  height: 16px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 1000px;
+  animation: loading 1.2s infinite;
+}

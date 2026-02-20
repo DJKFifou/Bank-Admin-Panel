@@ -1,6 +1,7 @@
 "use client";
 
 import ClientList from "@/components/ClientList";
+import ListSkeleton from "@/components/ListSkeleton";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useState, Suspense } from "react";
@@ -42,7 +43,7 @@ export default function SearchBarClient({ clients, errorMessage }) {
         className="border-2 w-fit rounded p-1"
         onChange={searchClient}
       />
-      <Suspense fallback={<p>Loading clients...</p>}>
+      <Suspense fallback={<ListSkeleton />}>
         <ClientList clientSearched={clientSearched} />
       </Suspense>
       {errorMessage && <p className="text-red-500">{errorMessage}</p>}

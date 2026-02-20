@@ -1,4 +1,5 @@
 import AccountList from "@/components/AccountList";
+import ListSkeleton from "@/components/ListSkeleton";
 import { Suspense } from "react";
 
 export default async function BankAccountPage() {
@@ -70,7 +71,7 @@ export default async function BankAccountPage() {
     return (
       <div className="flex flex-col gap-4">
         <h1>Bank accounts :</h1>
-        <Suspense fallback={<div>Loading accounts...</div>}>
+        <Suspense fallback={<ListSkeleton />}>
           <AccountList accountData={successfulAccounts} />
         </Suspense>
       </div>
